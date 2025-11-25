@@ -20,6 +20,7 @@ void PlayingState::onEntry()
     m_player = new Player(850.0f, 370.0f);
     m_entityManager->addEntity(m_player);
 
+    /*
     try {
         std::string enemyTextureId = "Enemy_Goblin"; 
         
@@ -40,6 +41,7 @@ void PlayingState::onEntry()
     } catch (const std::runtime_error &e) {
         std::cerr << "ERROR: No se pudo crear o agregar el enemigo: " << e.what() << std::endl;
     }
+        */
 
     try
     {

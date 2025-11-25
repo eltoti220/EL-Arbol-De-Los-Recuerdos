@@ -18,8 +18,6 @@ private:
     float getDamageForStep(int step) const;
     const float COOLDOWN_NORMAL = 0.4f;
     const float COOLDOWN_SPECIAL = 0.9f;
-    // coldown para el ataque
-    // behavior tree
 };
 
 #endif
