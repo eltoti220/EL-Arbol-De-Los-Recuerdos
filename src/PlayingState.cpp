@@ -4,6 +4,7 @@
 #include "../include/MapaDataTypes.hpp"
 #include "../include/Quadtree.hpp"
 #include "../include/MeleeAttack.hpp"
+#include "../include/Enemy.hpp"
 #include <iostream>
 #include <algorithm>
 
@@ -23,6 +24,37 @@ void PlayingState::onEntry()
     m_entityManager = new EntityManager();
     m_player = new Player(850.0f, 370.0f);
     m_entityManager->addEntity(m_player);
+
+    try
+    {
+        std::string enemyTextureId = "Enemy_Goblin";
+
+        std::vector<sf::Vector2f> waypoints = {
+            {700.0f, 300.0f},
+            {950.0f, 300.0f},
+            {950.0f, 500.0f}};
+
+        Enemy *m_testEnemy = new Enemy(waypoints[0], waypoints, enemyTextureId, TextureManager::getInstance());
+
+        m_entityManager->addEntity(m_testEnemy);
+        std::cout << "DEBUG: Se ha agregado un enemigo de prueba al EntityManager.\n";
+    }
+    catch (const std::runtime_error &e)
+    {
+        std::cerr << "ERROR: No se pudo crear o agregar el enemigo: " << e.what() << std::endl;
+    }
+
+    try
+    {
+        sf::Texture &tx_background = TextureManager::getInstance().getTexture("Background_mapa_Init");
+        sp_background.setTexture(tx_background);
+        sp_background.setScale(7.0f, 5.0f);
+        std::cout << "DEBUG: PlayingState Cargo la textura usando el texturemanager.\n";
+    }
+    catch (const std::runtime_error &e)
+    {
+        std::cerr << "ERROR: No se pudo obtener la textura de fondo ('Background_mapa_Init') del manager: " << e.what() << std::endl;
+    }
 
     m_gameMap = new GameMap(MapaData::MAP_WIDTH_INIT, MapaData::MAP_HEIGHT_INIT);
     m_gameMap->RegisterDinamicEntity(m_player);
@@ -64,7 +96,7 @@ void PlayingState::update(float dtime)
 {
     if (m_entityManager && m_gameMap)
     {
-        m_entityManager->updateEntities(dtime);
+        m_entityManager->updateEntities(dtime, *m_player);
         m_gameMap->update(dtime);
 
         const std::vector<Entity *> &entities = m_entityManager->getEntities();

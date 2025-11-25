@@ -6,6 +6,7 @@
 #include "EntityManager.hpp"
 #include "Player.hpp"
 #include "GameMap.hpp"
+#include "Enemy.hpp"
 #include "MapaDataTypes.hpp"
 #include <SFML/Graphics.hpp>
 class PlayingState : public GameState
@@ -26,6 +27,7 @@ public:
 
 private:
     EntityManager *m_entityManager;
+    sf::Sprite sp_background;
     sf::View m_gameView;
     Player *m_player;
     GameMap *m_gameMap = nullptr;

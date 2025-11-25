@@ -18,11 +18,18 @@ void EntityManager::addEntity(Entity *entity)
     }
 }
 
-void EntityManager::updateEntities(float dtime)
+void EntityManager::updateEntities(float dtime, Player &player)
 {
     for (Entity *entity : entities)
     {
-        entity->update(dtime);
+        if (Enemy *enemy = dynamic_cast<Enemy *>(entity))
+        {
+            enemy->update(dtime, player);
+        }
+        else
+        {
+            entity->update(dtime);
+        }
     }
 }
 

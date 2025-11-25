@@ -44,4 +44,5 @@ struct BossSpawnData
     // float spawnTime; // tiempo despues del inicio del mapa para spawnear //*no estoy seguro de colocar eso, hay que ver si lo podemos desarrollar bien asi
     std::string introCinematicFile; // archivo de video para la intro del boss
 };
+
 #endif
