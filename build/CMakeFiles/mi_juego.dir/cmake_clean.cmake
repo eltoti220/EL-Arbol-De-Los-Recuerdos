@@ -1,0 +1,41 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/mi_juego.dir/src/BlockOfAbility.cpp.obj"
+  "CMakeFiles/mi_juego.dir/src/BlockOfAbility.cpp.obj.d"
+  "CMakeFiles/mi_juego.dir/src/BlockOnAbility.cpp.obj"
+  "CMakeFiles/mi_juego.dir/src/BlockOnAbility.cpp.obj.d"
+  "CMakeFiles/mi_juego.dir/src/DodgeAbility.cpp.obj"
+  "CMakeFiles/mi_juego.dir/src/DodgeAbility.cpp.obj.d"
+  "CMakeFiles/mi_juego.dir/src/EntityManager.cpp.obj"
+  "CMakeFiles/mi_juego.dir/src/EntityManager.cpp.obj.d"
+  "CMakeFiles/mi_juego.dir/src/Game.cpp.obj"
+  "CMakeFiles/mi_juego.dir/src/Game.cpp.obj.d"
+  "CMakeFiles/mi_juego.dir/src/GameMap.cpp.obj"
+  "CMakeFiles/mi_juego.dir/src/GameMap.cpp.obj.d"
+  "CMakeFiles/mi_juego.dir/src/GameState.cpp.obj"
+  "CMakeFiles/mi_juego.dir/src/GameState.cpp.obj.d"
+  "CMakeFiles/mi_juego.dir/src/MainMenu.cpp.obj"
+  "CMakeFiles/mi_juego.dir/src/MainMenu.cpp.obj.d"
+  "CMakeFiles/mi_juego.dir/src/MeleeAttack.cpp.obj"
+  "CMakeFiles/mi_juego.dir/src/MeleeAttack.cpp.obj.d"
+  "CMakeFiles/mi_juego.dir/src/Player.cpp.obj"
+  "CMakeFiles/mi_juego.dir/src/Player.cpp.obj.d"
+  "CMakeFiles/mi_juego.dir/src/PlayingState.cpp.obj"
+  "CMakeFiles/mi_juego.dir/src/PlayingState.cpp.obj.d"
+  "CMakeFiles/mi_juego.dir/src/Quadtree.cpp.obj"
+  "CMakeFiles/mi_juego.dir/src/Quadtree.cpp.obj.d"
+  "CMakeFiles/mi_juego.dir/src/StateManager.cpp.obj"
+  "CMakeFiles/mi_juego.dir/src/StateManager.cpp.obj.d"
+  "CMakeFiles/mi_juego.dir/src/TextureManager.cpp.obj"
+  "CMakeFiles/mi_juego.dir/src/TextureManager.cpp.obj.d"
+  "CMakeFiles/mi_juego.dir/src/main.cpp.obj"
+  "CMakeFiles/mi_juego.dir/src/main.cpp.obj.d"
+  "libmi_juego.dll.a"
+  "mi_juego.exe"
+  "mi_juego.exe.manifest"
+  "mi_juego.pdb"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/mi_juego.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()
