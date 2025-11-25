@@ -1,0 +1,92 @@
+[
+{
+  "directory": "C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe  @CMakeFiles/mi_juego.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\mi_juego.dir\\src\\BTNodes.cpp.obj -c C:\\Users\\Andres\\OneDrive\\Documentos\\GitHub\\EL-Arbol-De-Los-Recuerdos\\src\\BTNodes.cpp",
+  "file": "C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/src/BTNodes.cpp",
+  "output": "CMakeFiles/mi_juego.dir/src/BTNodes.cpp.obj"
+},
+{
+  "directory": "C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe  @CMakeFiles/mi_juego.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\mi_juego.dir\\src\\BlockOfAbility.cpp.obj -c C:\\Users\\Andres\\OneDrive\\Documentos\\GitHub\\EL-Arbol-De-Los-Recuerdos\\src\\BlockOfAbility.cpp",
+  "file": "C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/src/BlockOfAbility.cpp",
+  "output": "CMakeFiles/mi_juego.dir/src/BlockOfAbility.cpp.obj"
+},
+{
+  "directory": "C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe  @CMakeFiles/mi_juego.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\mi_juego.dir\\src\\BlockOnAbility.cpp.obj -c C:\\Users\\Andres\\OneDrive\\Documentos\\GitHub\\EL-Arbol-De-Los-Recuerdos\\src\\BlockOnAbility.cpp",
+  "file": "C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/src/BlockOnAbility.cpp",
+  "output": "CMakeFiles/mi_juego.dir/src/BlockOnAbility.cpp.obj"
+},
+{
+  "directory": "C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe  @CMakeFiles/mi_juego.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\mi_juego.dir\\src\\DodgeAbility.cpp.obj -c C:\\Users\\Andres\\OneDrive\\Documentos\\GitHub\\EL-Arbol-De-Los-Recuerdos\\src\\DodgeAbility.cpp",
+  "file": "C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/src/DodgeAbility.cpp",
+  "output": "CMakeFiles/mi_juego.dir/src/DodgeAbility.cpp.obj"
+},
+{
+  "directory": "C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe  @CMakeFiles/mi_juego.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\mi_juego.dir\\src\\Enemy.cpp.obj -c C:\\Users\\Andres\\OneDrive\\Documentos\\GitHub\\EL-Arbol-De-Los-Recuerdos\\src\\Enemy.cpp",
+  "file": "C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/src/Enemy.cpp",
+  "output": "CMakeFiles/mi_juego.dir/src/Enemy.cpp.obj"
+},
+{
+  "directory": "C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe  @CMakeFiles/mi_juego.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\mi_juego.dir\\src\\EntityManager.cpp.obj -c C:\\Users\\Andres\\OneDrive\\Documentos\\GitHub\\EL-Arbol-De-Los-Recuerdos\\src\\EntityManager.cpp",
+  "file": "C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/src/EntityManager.cpp",
+  "output": "CMakeFiles/mi_juego.dir/src/EntityManager.cpp.obj"
+},
+{
+  "directory": "C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe  @CMakeFiles/mi_juego.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\mi_juego.dir\\src\\Game.cpp.obj -c C:\\Users\\Andres\\OneDrive\\Documentos\\GitHub\\EL-Arbol-De-Los-Recuerdos\\src\\Game.cpp",
+  "file": "C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/src/Game.cpp",
+  "output": "CMakeFiles/mi_juego.dir/src/Game.cpp.obj"
+},
+{
+  "directory": "C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe  @CMakeFiles/mi_juego.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\mi_juego.dir\\src\\GameState.cpp.obj -c C:\\Users\\Andres\\OneDrive\\Documentos\\GitHub\\EL-Arbol-De-Los-Recuerdos\\src\\GameState.cpp",
+  "file": "C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/src/GameState.cpp",
+  "output": "CMakeFiles/mi_juego.dir/src/GameState.cpp.obj"
+},
+{
+  "directory": "C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe  @CMakeFiles/mi_juego.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\mi_juego.dir\\src\\MainMenu.cpp.obj -c C:\\Users\\Andres\\OneDrive\\Documentos\\GitHub\\EL-Arbol-De-Los-Recuerdos\\src\\MainMenu.cpp",
+  "file": "C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/src/MainMenu.cpp",
+  "output": "CMakeFiles/mi_juego.dir/src/MainMenu.cpp.obj"
+},
+{
+  "directory": "C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe  @CMakeFiles/mi_juego.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\mi_juego.dir\\src\\MeleeAttack.cpp.obj -c C:\\Users\\Andres\\OneDrive\\Documentos\\GitHub\\EL-Arbol-De-Los-Recuerdos\\src\\MeleeAttack.cpp",
+  "file": "C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/src/MeleeAttack.cpp",
+  "output": "CMakeFiles/mi_juego.dir/src/MeleeAttack.cpp.obj"
+},
+{
+  "directory": "C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe  @CMakeFiles/mi_juego.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\mi_juego.dir\\src\\Player.cpp.obj -c C:\\Users\\Andres\\OneDrive\\Documentos\\GitHub\\EL-Arbol-De-Los-Recuerdos\\src\\Player.cpp",
+  "file": "C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/src/Player.cpp",
+  "output": "CMakeFiles/mi_juego.dir/src/Player.cpp.obj"
+},
+{
+  "directory": "C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe  @CMakeFiles/mi_juego.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\mi_juego.dir\\src\\PlayingState.cpp.obj -c C:\\Users\\Andres\\OneDrive\\Documentos\\GitHub\\EL-Arbol-De-Los-Recuerdos\\src\\PlayingState.cpp",
+  "file": "C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/src/PlayingState.cpp",
+  "output": "CMakeFiles/mi_juego.dir/src/PlayingState.cpp.obj"
+},
+{
+  "directory": "C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe  @CMakeFiles/mi_juego.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\mi_juego.dir\\src\\StateManager.cpp.obj -c C:\\Users\\Andres\\OneDrive\\Documentos\\GitHub\\EL-Arbol-De-Los-Recuerdos\\src\\StateManager.cpp",
+  "file": "C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/src/StateManager.cpp",
+  "output": "CMakeFiles/mi_juego.dir/src/StateManager.cpp.obj"
+},
+{
+  "directory": "C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe  @CMakeFiles/mi_juego.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\mi_juego.dir\\src\\TextureManager.cpp.obj -c C:\\Users\\Andres\\OneDrive\\Documentos\\GitHub\\EL-Arbol-De-Los-Recuerdos\\src\\TextureManager.cpp",
+  "file": "C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/src/TextureManager.cpp",
+  "output": "CMakeFiles/mi_juego.dir/src/TextureManager.cpp.obj"
+},
+{
+  "directory": "C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe  @CMakeFiles/mi_juego.dir/includes_CXX.rsp -std=gnu++17 -o CMakeFiles\\mi_juego.dir\\src\\main.cpp.obj -c C:\\Users\\Andres\\OneDrive\\Documentos\\GitHub\\EL-Arbol-De-Los-Recuerdos\\src\\main.cpp",
+  "file": "C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/src/main.cpp",
+  "output": "CMakeFiles/mi_juego.dir/src/main.cpp.obj"
+}
+]

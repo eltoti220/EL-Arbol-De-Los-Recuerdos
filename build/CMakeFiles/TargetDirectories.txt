@@ -1,0 +1,3 @@
+C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/build/CMakeFiles/mi_juego.dir
+C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/build/CMakeFiles/edit_cache.dir
+C:/Users/Andres/OneDrive/Documentos/GitHub/EL-Arbol-De-Los-Recuerdos/build/CMakeFiles/rebuild_cache.dir
