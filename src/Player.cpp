@@ -1,0 +1,220 @@
+#include "../include/Player.hpp"
+#include <iostream>
+#include <cmath>
+
+Player::Player(float startX, float startY)
+{
+    m_position = sf::Vector2f(startX, startY);
+    m_speed = 300.0f;
+    currentMovement = sf::Vector2f(0.0f, 0.0f);
+
+    maxHealth = 100;
+    currentHealth = maxHealth;
+    attackDamage = 15.0f;
+    attackSpeed = 0.8f;
+
+    isBlockingFlag = false;
+    m_isDodging = false;
+    dodgeTime = 0.0f;
+    dodgeDirection = {0.0f, 0.0f};
+    m_dodgeSpeed = 600.0f;
+
+    playerShape.setRadius(25.0f);
+    playerShape.setFillColor(sf::Color::Blue);
+    playerShape.setOrigin(25.0f, 25.0f);
+    playerShape.setPosition(m_position);
+
+    meeleAttack = new MeeleAttack;
+    dodgeAbility = new DodgeAbility;
+    blockOfAbility = new BlockOfAbility;
+    blockOnAbility = new BlockOnAbility;
+}
+
+void Player::stopMovementX()
+{
+    currentMovement.x = 0.0f;
+}
+
+void Player::stopMovementY()
+{
+    currentMovement.y = 0.0f;
+}
+
+Player::~Player()
+{
+    delete meeleAttack;
+    delete dodgeAbility;
+    delete blockOfAbility;
+    delete blockOnAbility;
+}
+
+Rectangle Player::getBoundingBox() const
+{
+    float radius = playerShape.getRadius();
+    sf::Vector2f pos = playerShape.getPosition();
+    return Rectangle(pos.x - radius, pos.y - radius, radius * 2, radius * 2);
+}
+
+void Player::prossesEvent(sf::Event event)
+{
+    if (event.type == sf::Event::KeyPressed)
+    {
+        if (event.key.code == sf::Keyboard::K && meeleAttack->isReady())
+            meeleAttack->execute(this);
+
+        if (event.key.code == sf::Keyboard::J && dodgeAbility->isReady())
+            dodgeAbility->execute(this);
+
+        if (event.key.code == sf::Keyboard::LShift)
+        {
+            std::cout << "DEBUG: Bloqueo iniciado (BlockOnAbility).\n";
+            playerShape.setFillColor(sf::Color::Green);
+            blockOnAbility->execute(this);
+            isBlockingFlag = true;
+        }
+
+        // Movimiento
+        if (event.key.code == sf::Keyboard::W) currentMovement.y = -1.0f;
+        if (event.key.code == sf::Keyboard::S) currentMovement.y = 1.0f;
+        if (event.key.code == sf::Keyboard::A) currentMovement.x = -1.0f;
+        if (event.key.code == sf::Keyboard::D) currentMovement.x = 1.0f;
+    }
+    else if (event.type == sf::Event::KeyReleased)
+    {
+        if (event.key.code == sf::Keyboard::LShift)
+        {
+            std::cout << "DEBUG: Bloqueo finalizado (BlockOfAbility).\n";
+            playerShape.setFillColor(sf::Color::Blue);
+            blockOfAbility->execute(this);
+            isBlockingFlag = false;
+        }
+
+        if (event.key.code == sf::Keyboard::W || event.key.code == sf::Keyboard::S)
+            currentMovement.y = 0.0f;
+        if (event.key.code == sf::Keyboard::A || event.key.code == sf::Keyboard::D)
+            currentMovement.x = 0.0f;
+    }
+}
+
+void Player::startDodge(float duration)
+{
+    if (m_isDodging) return;
+
+    dodgeTime = duration;
+    m_isDodging = true;
+
+    dodgeDirection = currentMovement;
+    if (currentMovement.x == 0.0f && currentMovement.y == 0.0f)
+        dodgeDirection.y = 1.0f;
+
+    playerShape.setFillColor(sf::Color::Cyan);
+    std::cout << "DEBUG: Jugador ha iniciado esquiva por " << duration << " segundos.\n";
+}
+
+void Player::update(float dtime)
+{
+    meeleAttack->update(dtime);
+    dodgeAbility->update(dtime);
+
+    sf::Vector2f movement = currentMovement;
+
+    if (m_isDodging)
+    {
+        dodgeTime -= dtime;
+        if (dodgeTime > 0.0f)
+            m_position += dodgeDirection * m_dodgeSpeed * dtime;
+        else
+        {
+            m_isDodging = false;
+            playerShape.setFillColor(sf::Color::Blue);
+            std::cout << "DEBUG: Jugador ha terminado la esquiva.\n";
+        }
+    }
+
+    float effectiveSpeed = m_speed;
+    const float BLOCKING_SPEED_PENALTY = 0.5f;
+    if (isBlockingFlag)
+        effectiveSpeed *= BLOCKING_SPEED_PENALTY;
+
+    if (!m_isDodging && (movement.x != 0.0f || movement.y != 0.0f))
+    {
+        float length = std::sqrt(movement.x * movement.x + movement.y * movement.y);
+        movement /= length;
+        m_position += movement * effectiveSpeed * dtime;
+    }
+
+    playerShape.setPosition(m_position);
+}
+
+void Player::checkMapCollision(GameMap &gameMap)
+{
+    Rectangle playerBox = getBoundingBox();
+    std::vector<Entity *> collidingEntities = gameMap.getEntitiesInArea(playerBox);
+
+    for (Entity *entity : collidingEntities)
+    {
+        if (entity == this)
+        {
+            continue;
+        }
+        Rectangle entityBox = entity->getBoundingBox();
+
+        sf::Vector2f mtv = playerBox.CalculateMtv(entityBox);
+        if (mtv.x == 0.0f && mtv.y == 0.0f)
+        {
+            continue;
+        }
+
+        m_position += mtv;
+
+        playerShape.setPosition(m_position);
+    }
+}
+
+void Player::draw(sf::RenderTarget &target, sf::RenderStates states) const
+{
+    target.draw(playerShape, states);
+}
+
+// --- MÉTODO DE DAÑO FINAL Y COMPLETO ---
+void Player::takeDamage(int amount)
+{
+    // 1. Lógica de Inmunidad/Esquive
+    if (m_isDodging) {
+        std::cout << "DEBUG: Jugador esquivó el ataque. No recibió daño.\n";
+        return; // El jugador no recibe daño si está esquivando.
+    }
+
+    int finalDamage = amount;
+    const float BLOCK_DAMAGE_REDUCTION = 0.5f; // Reduce el daño a la mitad
+
+    // 2. Lógica de Bloqueo
+    if (isBlockingFlag) {
+        finalDamage = static_cast<int>(amount * BLOCK_DAMAGE_REDUCTION);
+        std::cout << "DEBUG: Jugador bloqueó. Daño reducido de " << amount << " a " << finalDamage << ".\n";
+    }
+
+    // 3. Aplicar Daño
+    currentHealth -= finalDamage;
+    
+    // Asegurarse de que la vida no sea negativa
+    if (currentHealth < 0) {
+        currentHealth = 0;
+    }
+
+    std::cout << "DEBUG: Player recibió " << finalDamage << " de daño. Vida actual: " << currentHealth << "\n";
+    
+    // 4. Lógica de Muerte (Opcional)
+    if (currentHealth == 0) {
+        std::cout << "GAME OVER: El jugador ha muerto.\n";
+        // Aquí iría la lógica para cambiar el estado a Game Over
+    }
+}
+
+void Player::heal(int amount)
+{
+    currentHealth += amount;
+    if (currentHealth > maxHealth) currentHealth = maxHealth;
+
+    std::cout << "DEBUG: Player se curó " << amount << " de vida. Vida actual: " << currentHealth << "\n";
+}
