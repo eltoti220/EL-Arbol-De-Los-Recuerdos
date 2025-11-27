@@ -204,21 +204,20 @@ void PlayingState::draw(sf::RenderWindow &window)
         m_player->draw(window, sf::RenderStates::Default);
 
         // Bounding box del jugador (debug)
-        Rectangle rect = m_player->getBoundingBox();
+        /*Rectangle rect = m_player->getBoundingBox();
         sf::RectangleShape boundsShape(sf::Vector2f(rect.width, rect.height));
         boundsShape.setPosition(rect.x, rect.y);
         boundsShape.setFillColor(sf::Color::Transparent);
         boundsShape.setOutlineThickness(2.f);
         boundsShape.setOutlineColor(sf::Color::Yellow);
-        window.draw(boundsShape);
+        window.draw(boundsShape);*/
     }
 
     // Entidades
     if (m_entityManager)
         m_entityManager->drawEntities(window);
 
-    // --- DIBUJO DE LA INTERFAZ (HUD) ---
-    window.setView(window.getDefaultView()); // MUY IMPORTANTE: esto fija la UI
+    window.setView(window.getDefaultView());
 
     if (m_player)
     {

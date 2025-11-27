@@ -142,7 +142,7 @@ std::vector<Entity *> Quadtree::query(const Rectangle &range) const
 
 void Quadtree::draw(sf::RenderWindow &window) const
 {
-    sf::RectangleShape rectShape;
+    /*sf::RectangleShape rectShape;
     rectShape.setPosition(m_boundary.x, m_boundary.y);
     rectShape.setSize(sf::Vector2f(m_boundary.width, m_boundary.height));
     rectShape.setFillColor(sf::Color::Transparent);
@@ -170,5 +170,5 @@ void Quadtree::draw(sf::RenderWindow &window) const
         m_northeast->draw(window);
         m_southwest->draw(window);
         m_southeast->draw(window);
-    }
+    }*/
 }

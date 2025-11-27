@@ -20,3 +20,14 @@
 54204	62327	7859340530678287	CMakeFiles/mi_juego.dir/src/Tree.cpp.obj	200327cd8abfd8b8
 54645	66054	7859340531897553	CMakeFiles/mi_juego.dir/src/main.cpp.obj	e5a7deba83b384ba
 66058	67516	7859340646035797	mi_juego.exe	d9541c6ee394d861
+68	10757	7859547377891957	CMakeFiles/mi_juego.dir/src/main.cpp.obj	e5a7deba83b384ba
+43	10933	7859547377642087	CMakeFiles/mi_juego.dir/src/Game.cpp.obj	f0c56443415d3d27
+56	10993	7859547377811998	CMakeFiles/mi_juego.dir/src/PlayingState.cpp.obj	dc1e130a69d8e60
+50	11039	7859547377722055	CMakeFiles/mi_juego.dir/src/MainMenu.cpp.obj	74f4be53bb413500
+11046	12658	7859547487673835	mi_juego.exe	d9541c6ee394d861
+147	4598	7859598942664715	CMakeFiles/mi_juego.dir/src/Tree.cpp.obj	200327cd8abfd8b8
+140	4631	7859598942554781	CMakeFiles/mi_juego.dir/src/Quadtree.cpp.obj	8ede1cdbd8c170d4
+132	6287	7859598942464844	CMakeFiles/mi_juego.dir/src/PlayingState.cpp.obj	dc1e130a69d8e60
+6290	7974	7859599004044930	mi_juego.exe	d9541c6ee394d861
+19	2626	7859600337992738	CMakeFiles/mi_juego.dir/src/Tree.cpp.obj	200327cd8abfd8b8
+2633	3452	7859600364119137	mi_juego.exe	d9541c6ee394d861
