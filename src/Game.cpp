@@ -13,7 +13,7 @@ Game::Game()
     m_window.setFramerateLimit(60);
 
     // 3. Empujar el estado inicial.
-    manager->pushSate(new MainMenu(manager));
+    manager->pushState(new MainMenu(manager));
 }
 
 void Game::run()
@@ -56,17 +56,27 @@ void Game::init()
 {
     m_window.create(sf::VideoMode(1400, 700), "Menu");
 
-    // --- CARGA DE TEXTURAS ---
-    TextureManager::getInstance().loadTexture("Menu_Background", "assets/graphics/assets_Menu/Menu_Background.png");
-    TextureManager::getInstance().loadTexture("Background_mapa_Init", "assets/graphics/Mapas/Background_mapa_Init.png");
 
-    // ¡AÑADIR TEXTURAS CLAVE DEL JUEGO!
-    // 1. Textura del Enemigo (Usamos "Enemy_Goblin" como ID)
-    TextureManager::getInstance().loadTexture("Enemy_Goblin", "assets/graphics/Characters/enemy_goblin.png");
+    TextureManager::getInstance().loadTexture("Menu_Background", 
+        "assets/graphics/assets_Menu/Menu_Background.png");
 
-    // 2. Textura del Jugador (Crucial para el Player en PlayingState)
-    TextureManager::getInstance().loadTexture("Player_Sprite", "assets/graphics/Characters/player_main.png");
+    TextureManager::getInstance().loadTexture("Background_mapa_Init", 
+        "assets/graphics/Mapas/Background_mapa_Init.png");
+
+    TextureManager::getInstance().loadTexture("Enemy_Goblin",
+        "assets/graphics/Characters/enemy_goblin.png");
+
+    TextureManager::getInstance().loadTexture("Player_Sprite",
+        "assets/graphics/Characters/player_main.png");
+
+    TextureManager::getInstance().loadTexture("Inventory_Background",
+        "assets/graphics/Inventory/Inventory_Background.png");
+
+
+    TextureManager::getInstance().loadTexture("Item_Potion",
+        "assets/graphics/Items/potion.png");
 
     std::cout << "DEBUG: Texturas iniciales cargadas en Game::init().\n";
-    // -------------------------
 }
+
+

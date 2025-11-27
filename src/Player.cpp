@@ -13,7 +13,7 @@ Player::Player(float startX, float startY)
     attackDamage = 15.0f;
     attackSpeed = 0.8f;
 
-    isBloocking = false;
+    isBlockingFlag = false; // <- corregido
     m_isDodging = false;
     dodgeTime = 0.0f;
     dodgeDirection = {0.0f, 0.0f};
@@ -49,81 +49,53 @@ void Player::prossesEvent(sf::Event event)
 {
     if (event.type == sf::Event::KeyPressed)
     {
-        if (event.key.code == sf::Keyboard::K)
-        {
-            if (meeleAttack->isReady())
-            {
-                meeleAttack->execute(this);
-            }
-        }
-        else if (event.key.code == sf::Keyboard::J)
-        {
-            if (dodgeAbility->isReady())
-            {
-                dodgeAbility->execute(this);
-            }
-        }
-        else if (event.key.code == sf::Keyboard::LShift)
+        if (event.key.code == sf::Keyboard::K && meeleAttack->isReady())
+            meeleAttack->execute(this);
+
+        if (event.key.code == sf::Keyboard::J && dodgeAbility->isReady())
+            dodgeAbility->execute(this);
+
+        if (event.key.code == sf::Keyboard::LShift)
         {
             std::cout << "DEBUG: Bloqueo iniciado (BlockOnAbility).\n";
             playerShape.setFillColor(sf::Color::Green);
             blockOnAbility->execute(this);
+            isBlockingFlag = true;
         }
 
-        if (event.key.code == sf::Keyboard::W)
-        {
-            currentMovement.y = -1.0f;
-        }
-        else if (event.key.code == sf::Keyboard::S)
-        {
-            currentMovement.y = 1.0f;
-        }
-        else if (event.key.code == sf::Keyboard::A)
-        {
-            currentMovement.x = -1.0f;
-        }
-        else if (event.key.code == sf::Keyboard::D)
-        {
-            currentMovement.x = 1.0f;
-        }
+        // Movimiento
+        if (event.key.code == sf::Keyboard::W) currentMovement.y = -1.0f;
+        if (event.key.code == sf::Keyboard::S) currentMovement.y = 1.0f;
+        if (event.key.code == sf::Keyboard::A) currentMovement.x = -1.0f;
+        if (event.key.code == sf::Keyboard::D) currentMovement.x = 1.0f;
     }
-
     else if (event.type == sf::Event::KeyReleased)
     {
         if (event.key.code == sf::Keyboard::LShift)
         {
-            std::cout << "DEBUG: Bloqueo Finalizada (BlockOfAbility).\n";
+            std::cout << "DEBUG: Bloqueo finalizado (BlockOfAbility).\n";
             playerShape.setFillColor(sf::Color::Blue);
             blockOfAbility->execute(this);
+            isBlockingFlag = false;
         }
+
         if (event.key.code == sf::Keyboard::W || event.key.code == sf::Keyboard::S)
-        {
             currentMovement.y = 0.0f;
-        }
-        else if (event.key.code == sf::Keyboard::A || event.key.code == sf::Keyboard::D)
-        {
+        if (event.key.code == sf::Keyboard::A || event.key.code == sf::Keyboard::D)
             currentMovement.x = 0.0f;
-        }
     }
 }
 
 void Player::startDodge(float duration)
 {
-    if (m_isDodging)
-    {
-        return;
-    }
+    if (m_isDodging) return;
 
     dodgeTime = duration;
     m_isDodging = true;
 
     dodgeDirection = currentMovement;
-
     if (currentMovement.x == 0.0f && currentMovement.y == 0.0f)
-    {
         dodgeDirection.y = 1.0f;
-        ;
-    }
 
     playerShape.setFillColor(sf::Color::Cyan);
     std::cout << "DEBUG: Jugador ha iniciado esquiva por " << duration << " segundos.\n";
@@ -140,10 +112,7 @@ void Player::update(float dtime)
     {
         dodgeTime -= dtime;
         if (dodgeTime > 0.0f)
-        {
-            sf::Vector2f displacement = dodgeDirection * m_dodgeSpeed * dtime;
-            m_position += displacement;
-        }
+            m_position += dodgeDirection * m_dodgeSpeed * dtime;
         else
         {
             m_isDodging = false;
@@ -154,19 +123,13 @@ void Player::update(float dtime)
 
     float effectiveSpeed = m_speed;
     const float BLOCKING_SPEED_PENALTY = 0.5f;
-    if (isBloocking)
-    {
-        effectiveSpeed = m_speed * BLOCKING_SPEED_PENALTY;
-    }
+    if (isBlockingFlag)
+        effectiveSpeed *= BLOCKING_SPEED_PENALTY;
 
-    if (!m_isDodging)
+    if (!m_isDodging && (movement.x != 0.0f || movement.y != 0.0f))
     {
-        if (movement.x != 0.0f || movement.y != 0.0f)
-        {
-            float length = std::sqrt(movement.x * movement.x + movement.y * movement.y);
-            movement /= length;
-        }
-
+        float length = std::sqrt(movement.x * movement.x + movement.y * movement.y);
+        movement /= length;
         m_position += movement * effectiveSpeed * dtime;
     }
 
@@ -176,4 +139,20 @@ void Player::update(float dtime)
 void Player::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     target.draw(playerShape, states);
+}
+
+void Player::takeDamage(int amount)
+{
+    currentHealth -= amount;
+    if (currentHealth < 0) currentHealth = 0;
+
+    std::cout << "DEBUG: Player recibió " << amount << " de daño. Vida actual: " << currentHealth << "\n";
+}
+
+void Player::heal(int amount)
+{
+    currentHealth += amount;
+    if (currentHealth > maxHealth) currentHealth = maxHealth;
+
+    std::cout << "DEBUG: Player se curó " << amount << " de vida. Vida actual: " << currentHealth << "\n";
 }

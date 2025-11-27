@@ -6,31 +6,33 @@
 #include "EntityManager.hpp"
 #include "Player.hpp"
 #include "GameMap.hpp"
-#include "Enemy.hpp"
-#include "MapaDataTypes.hpp"
 #include <SFML/Graphics.hpp>
+
 class PlayingState : public GameState
 {
 public:
-    PlayingState(StateManager *manager);
+    PlayingState(StateManager* manager);
     virtual ~PlayingState() override;
+
     void prossesEvent(sf::Event event) override;
     void update(float dtime) override;
     void draw(sf::RenderWindow &window) override;
     void onEntry() override;
     void onExit() override;
 
+    // Evitar copias
     PlayingState(const PlayingState &) = delete;
     PlayingState &operator=(const PlayingState &) = delete;
     PlayingState(PlayingState &&) = delete;
     PlayingState &operator=(PlayingState &&) = delete;
 
 private:
-    EntityManager *m_entityManager;
+    EntityManager* m_entityManager = nullptr;
     sf::Sprite sp_background;
     sf::View m_gameView;
-    Player *m_player;
-    GameMap *m_gameMap = nullptr;
+    Player* m_player = nullptr;
+    GameMap* m_gameMap = nullptr;
+
     void handleCamera(float dtime);
 };
 
