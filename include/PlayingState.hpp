@@ -11,7 +11,7 @@
 class PlayingState : public GameState
 {
 public:
-    PlayingState(StateManager* manager);
+    PlayingState(StateManager *manager);
     virtual ~PlayingState() override;
 
     void prossesEvent(sf::Event event) override;
@@ -27,11 +27,11 @@ public:
     PlayingState &operator=(PlayingState &&) = delete;
 
 private:
-    EntityManager* m_entityManager = nullptr;
+    EntityManager *m_entityManager = nullptr;
     sf::Sprite sp_background;
     sf::View m_gameView;
-    Player* m_player = nullptr;
-    GameMap* m_gameMap = nullptr;
+    Player *m_player = nullptr;
+    GameMap *m_gameMap = nullptr;
 
     void handleCamera(float dtime);
 };

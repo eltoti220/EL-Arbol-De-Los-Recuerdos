@@ -125,6 +125,15 @@ build CMakeFiles/mi_juego.dir/src/GameState.cpp.obj: CXX_COMPILER__mi_juego_unsc
   TARGET_COMPILE_PDB = CMakeFiles\mi_juego.dir\
   TARGET_PDB = mi_juego.pdb
 
+build CMakeFiles/mi_juego.dir/src/InventoryState.cpp.obj: CXX_COMPILER__mi_juego_unscanned_ C$:/Users/user/OneDrive/Documentos/Programacion3c++/Bosque_delos_Recuerdos/EL-Arbol-De-Los-Recuerdos/src/InventoryState.cpp || cmake_object_order_depends_target_mi_juego
+  DEP_FILE = CMakeFiles\mi_juego.dir\src\InventoryState.cpp.obj.d
+  FLAGS = -std=gnu++17
+  INCLUDES = -IC:/Users/user/OneDrive/Documentos/Programacion3c++/Bosque_delos_Recuerdos/EL-Arbol-De-Los-Recuerdos/include -IC:/Users/user/OneDrive/Documentos/Programacion3c++/Bosque_delos_Recuerdos/EL-Arbol-De-Los-Recuerdos/external
+  OBJECT_DIR = CMakeFiles\mi_juego.dir
+  OBJECT_FILE_DIR = CMakeFiles\mi_juego.dir\src
+  TARGET_COMPILE_PDB = CMakeFiles\mi_juego.dir\
+  TARGET_PDB = mi_juego.pdb
+
 build CMakeFiles/mi_juego.dir/src/MainMenu.cpp.obj: CXX_COMPILER__mi_juego_unscanned_ C$:/Users/user/OneDrive/Documentos/Programacion3c++/Bosque_delos_Recuerdos/EL-Arbol-De-Los-Recuerdos/src/MainMenu.cpp || cmake_object_order_depends_target_mi_juego
   DEP_FILE = CMakeFiles\mi_juego.dir\src\MainMenu.cpp.obj.d
   FLAGS = -std=gnu++17
@@ -223,7 +232,7 @@ build CMakeFiles/mi_juego.dir/src/main.cpp.obj: CXX_COMPILER__mi_juego_unscanned
 #############################################
 # Link the executable mi_juego.exe
 
-build mi_juego.exe: CXX_EXECUTABLE_LINKER__mi_juego_ CMakeFiles/mi_juego.dir/src/BTNodes.cpp.obj CMakeFiles/mi_juego.dir/src/BlockOfAbility.cpp.obj CMakeFiles/mi_juego.dir/src/BlockOnAbility.cpp.obj CMakeFiles/mi_juego.dir/src/DodgeAbility.cpp.obj CMakeFiles/mi_juego.dir/src/Enemy.cpp.obj CMakeFiles/mi_juego.dir/src/EntityManager.cpp.obj CMakeFiles/mi_juego.dir/src/Game.cpp.obj CMakeFiles/mi_juego.dir/src/GameMap.cpp.obj CMakeFiles/mi_juego.dir/src/GameState.cpp.obj CMakeFiles/mi_juego.dir/src/MainMenu.cpp.obj CMakeFiles/mi_juego.dir/src/MapaDataTypes.cpp.obj CMakeFiles/mi_juego.dir/src/MeleeAttack.cpp.obj CMakeFiles/mi_juego.dir/src/Player.cpp.obj CMakeFiles/mi_juego.dir/src/PlayingState.cpp.obj CMakeFiles/mi_juego.dir/src/Quadtree.cpp.obj CMakeFiles/mi_juego.dir/src/StateManager.cpp.obj CMakeFiles/mi_juego.dir/src/TextureManager.cpp.obj CMakeFiles/mi_juego.dir/src/Tree.cpp.obj CMakeFiles/mi_juego.dir/src/main.cpp.obj | C$:/msys64/mingw64/lib/libsfml-graphics.dll.a C$:/msys64/mingw64/lib/libsfml-window.dll.a C$:/msys64/mingw64/lib/libsfml-audio.dll.a C$:/msys64/mingw64/lib/libsfml-network.dll.a C$:/msys64/mingw64/lib/libsfml-system.dll.a
+build mi_juego.exe: CXX_EXECUTABLE_LINKER__mi_juego_ CMakeFiles/mi_juego.dir/src/BTNodes.cpp.obj CMakeFiles/mi_juego.dir/src/BlockOfAbility.cpp.obj CMakeFiles/mi_juego.dir/src/BlockOnAbility.cpp.obj CMakeFiles/mi_juego.dir/src/DodgeAbility.cpp.obj CMakeFiles/mi_juego.dir/src/Enemy.cpp.obj CMakeFiles/mi_juego.dir/src/EntityManager.cpp.obj CMakeFiles/mi_juego.dir/src/Game.cpp.obj CMakeFiles/mi_juego.dir/src/GameMap.cpp.obj CMakeFiles/mi_juego.dir/src/GameState.cpp.obj CMakeFiles/mi_juego.dir/src/InventoryState.cpp.obj CMakeFiles/mi_juego.dir/src/MainMenu.cpp.obj CMakeFiles/mi_juego.dir/src/MapaDataTypes.cpp.obj CMakeFiles/mi_juego.dir/src/MeleeAttack.cpp.obj CMakeFiles/mi_juego.dir/src/Player.cpp.obj CMakeFiles/mi_juego.dir/src/PlayingState.cpp.obj CMakeFiles/mi_juego.dir/src/Quadtree.cpp.obj CMakeFiles/mi_juego.dir/src/StateManager.cpp.obj CMakeFiles/mi_juego.dir/src/TextureManager.cpp.obj CMakeFiles/mi_juego.dir/src/Tree.cpp.obj CMakeFiles/mi_juego.dir/src/main.cpp.obj | C$:/msys64/mingw64/lib/libsfml-graphics.dll.a C$:/msys64/mingw64/lib/libsfml-window.dll.a C$:/msys64/mingw64/lib/libsfml-audio.dll.a C$:/msys64/mingw64/lib/libsfml-network.dll.a C$:/msys64/mingw64/lib/libsfml-system.dll.a
   LINK_LIBRARIES = C:/msys64/mingw64/lib/libsfml-graphics.dll.a  C:/msys64/mingw64/lib/libsfml-window.dll.a  C:/msys64/mingw64/lib/libsfml-audio.dll.a  C:/msys64/mingw64/lib/libsfml-network.dll.a  C:/msys64/mingw64/lib/libsfml-system.dll.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\mi_juego.dir
   POST_BUILD = cd .

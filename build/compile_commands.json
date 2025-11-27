@@ -55,6 +55,12 @@
 },
 {
   "directory": "C:/Users/user/OneDrive/Documentos/Programacion3c++/Bosque_delos_Recuerdos/El-Arbol-De-Los-Recuerdos/build",
+  "command": "C:\\msys64\\mingw64\\bin\\c++.exe -IC:/Users/user/OneDrive/Documentos/Programacion3c++/Bosque_delos_Recuerdos/EL-Arbol-De-Los-Recuerdos/include -IC:/Users/user/OneDrive/Documentos/Programacion3c++/Bosque_delos_Recuerdos/EL-Arbol-De-Los-Recuerdos/external -std=gnu++17 -o CMakeFiles\\mi_juego.dir\\src\\InventoryState.cpp.obj -c C:\\Users\\user\\OneDrive\\Documentos\\Programacion3c++\\Bosque_delos_Recuerdos\\EL-Arbol-De-Los-Recuerdos\\src\\InventoryState.cpp",
+  "file": "C:/Users/user/OneDrive/Documentos/Programacion3c++/Bosque_delos_Recuerdos/EL-Arbol-De-Los-Recuerdos/src/InventoryState.cpp",
+  "output": "C:/Users/user/OneDrive/Documentos/Programacion3c++/Bosque_delos_Recuerdos/El-Arbol-De-Los-Recuerdos/build/CMakeFiles/mi_juego.dir/src/InventoryState.cpp.obj"
+},
+{
+  "directory": "C:/Users/user/OneDrive/Documentos/Programacion3c++/Bosque_delos_Recuerdos/El-Arbol-De-Los-Recuerdos/build",
   "command": "C:\\msys64\\mingw64\\bin\\c++.exe -IC:/Users/user/OneDrive/Documentos/Programacion3c++/Bosque_delos_Recuerdos/EL-Arbol-De-Los-Recuerdos/include -IC:/Users/user/OneDrive/Documentos/Programacion3c++/Bosque_delos_Recuerdos/EL-Arbol-De-Los-Recuerdos/external -std=gnu++17 -o CMakeFiles\\mi_juego.dir\\src\\MainMenu.cpp.obj -c C:\\Users\\user\\OneDrive\\Documentos\\Programacion3c++\\Bosque_delos_Recuerdos\\EL-Arbol-De-Los-Recuerdos\\src\\MainMenu.cpp",
   "file": "C:/Users/user/OneDrive/Documentos/Programacion3c++/Bosque_delos_Recuerdos/EL-Arbol-De-Los-Recuerdos/src/MainMenu.cpp",
   "output": "C:/Users/user/OneDrive/Documentos/Programacion3c++/Bosque_delos_Recuerdos/El-Arbol-De-Los-Recuerdos/build/CMakeFiles/mi_juego.dir/src/MainMenu.cpp.obj"
