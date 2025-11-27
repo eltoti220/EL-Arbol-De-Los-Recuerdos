@@ -27,7 +27,9 @@ EL-ARBOL-DE-LOS-RECUERDOS/
 
 Compilación y ejecución
 Desde la carpeta del proyecto:
-Se bebe borrar la carpeta build y procedemos a volverla a crear y continuar con los pasos a continuación:
+Se bebe borrar la carpeta build:
+rm -rf build
+procedemos a volverla a crear y continuar con los pasos a continuación:
 mkdir build
 cd build
 cmake ..
