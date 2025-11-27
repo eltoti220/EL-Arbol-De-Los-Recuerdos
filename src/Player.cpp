@@ -30,6 +30,16 @@ Player::Player(float startX, float startY)
     blockOnAbility = new BlockOnAbility;
 }
 
+void Player::stopMovementX()
+{
+    currentMovement.x = 0.0f;
+}
+
+void Player::stopMovementY()
+{
+    currentMovement.y = 0.0f;
+}
+
 Player::~Player()
 {
     delete meeleAttack;

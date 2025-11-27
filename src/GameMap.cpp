@@ -1,7 +1,7 @@
 #include "../include/GameMap.hpp"
 #include "../include/TextureManager.hpp"
 #include <iostream>
-const float SUBDIVISION_SIZE = 100.0f;
+const float SUBDIVISION_SIZE = 70.0f;
 
 GameMap::GameMap(float width, float height)
     : m_width(width), m_height(height), m_collisionTree(nullptr)
@@ -23,7 +23,7 @@ GameMap::GameMap(float width, float height)
     m_height = mapData.height;
 
     Rectangle boundary(0.0f, 0.0f, m_width, m_height);
-    m_collisionTree = new Quadtree(boundary, 6, 5);
+    m_collisionTree = new Quadtree(boundary, 6);
 
     try
     {
@@ -86,14 +86,14 @@ void GameMap::update(float dtime)
     // Aquí se podrían actualizar elementos del mapa si es necesario como las entidades
     if (m_collisionTree)
     {
-        Rectangle boundary = m_collisionTree->getBoundary();
-        delete m_collisionTree;
-
-        m_collisionTree = new Quadtree(boundary, 6, 5);
+        m_collisionTree->clear();
 
         for (const auto &entity : m_staticEntities)
         {
-            m_collisionTree->insert(entity.get());
+            if (!m_collisionTree->insert(entity.get()))
+            {
+                std::cout << "WARNING: Static entity (" << entity->getPosition().x << ", " << entity->getPosition().y << ") failed to insert into Quadtree.\n";
+            }
         }
 
         for (Entity *entity : m_dynamicEntities)

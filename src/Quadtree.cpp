@@ -1,6 +1,7 @@
 #include "../include/Quadtree.hpp"
 #include "../include/Entity.hpp"
 #include <algorithm>
+#include <iostream>
 
 Quadtree::Quadtree(const Rectangle &boundary, int capacity, int level)
     : m_boundary(boundary), m_capacity(capacity), m_level(level),
@@ -43,80 +44,52 @@ bool Quadtree::insert(Entity *entity)
 {
     Rectangle entityRect = entity->getBoundingBox();
 
-    if (!m_boundary.intersects(entityRect))
+    if (!m_boundary.contains(entityRect))
     {
         return false;
     }
 
     if (m_northwest)
     {
-        if (m_northwest->getBoundary().contains(entityRect))
-        {
-            return m_northwest->insert(entity);
-        }
-        else if (m_northeast->getBoundary().contains(entityRect))
-        {
-            return m_northeast->insert(entity);
-        }
-        else if (m_southwest->getBoundary().contains(entityRect))
-        {
-            return m_southwest->insert(entity);
-        }
-        else if (m_southeast->getBoundary().contains(entityRect))
-        {
-            return m_southeast->insert(entity);
-        }
+        if (m_northwest->insert(entity))
+            return true;
+        if (m_northeast->insert(entity))
+            return true;
+        if (m_southwest->insert(entity))
+            return true;
+        if (m_southeast->insert(entity))
+            return true;
+
+        m_entities.push_back(entity);
+        return true;
     }
 
-    if (!m_northwest && m_entities.size() < m_capacity)
+    if (m_entities.size() < m_capacity || m_level >= MAX_LEVELS)
     {
         m_entities.push_back(entity);
         return true;
     }
 
-    if (m_level < MAX_LEVELS && !m_northwest)
+    if (m_level < MAX_LEVELS)
     {
         subdivide();
 
-        for (auto it = m_entities.begin(); it != m_entities.end();)
-        {
-            Entity *existingEntity = *it;
-            Rectangle existingRect = existingEntity->getBoundingBox();
+        std::vector<Entity *> temp = std::move(m_entities);
 
-            if (m_northwest->getBoundary().contains(existingRect))
+        temp.push_back(entity);
+
+        for (Entity *e : temp)
+        {
+            if (!(m_northwest->insert(e) || m_northeast->insert(e) ||
+                  m_southwest->insert(e) || m_southeast->insert(e)))
             {
-                m_northwest->insert(existingEntity);
-                it = m_entities.erase(it);
-            }
-            else if (m_northeast->getBoundary().contains(existingRect))
-            {
-                m_northeast->insert(existingEntity);
-                it = m_entities.erase(it);
-            }
-            else if (m_southwest->getBoundary().contains(existingRect))
-            {
-                m_southwest->insert(existingEntity);
-                it = m_entities.erase(it);
-            }
-            else if (m_southeast->getBoundary().contains(existingRect))
-            {
-                m_southeast->insert(existingEntity);
-                it = m_entities.erase(it);
-            }
-            else
-            {
-                ++it;
+                m_entities.push_back(e);
             }
         }
 
-        if (m_northwest->insert(entity) || m_northeast->insert(entity) || m_southwest->insert(entity) || m_southeast->insert(entity))
-        {
-            return true;
-        }
+        return true;
     }
 
-    // 5. Si no cabe en ningún sub-nodo (es demasiado grande o cruza las fronteras),
-    // se queda almacenado en este nodo. Esto es CRÍTICO para los objetos grandes.
     m_entities.push_back(entity);
     return true;
 }

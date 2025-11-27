@@ -45,6 +45,8 @@ public:
     Ability *getMeeleAttack() const { return meeleAttack; }
     float getAttackDamage() const { return attackDamage; }
     float getAttackrange() const { return rangeAttack; }
+    void stopMovementX();
+    void stopMovementY();
 
 private:
     // atributos de combate
@@ -56,7 +58,6 @@ private:
 
     // Colision
     sf::Vector2f currentPosition;
-    ;
 
     // atributos de habilidad
     bool isBloocking;
