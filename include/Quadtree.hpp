@@ -20,12 +20,14 @@ public:
 
     std::vector<Entity *> query(const Rectangle &range) const;
     void draw(sf::RenderWindow &window) const;
+    const Rectangle &getBoundary() const { return m_boundary; }
 
 private:
     int m_capacity;
     Rectangle m_boundary;
     std::vector<Entity *> m_entities;
     int m_level;
+    const int MAX_ENTITIES = 6;
     const int MAX_LEVELS = 5;
 
     std::unique_ptr<Quadtree> m_northwest;

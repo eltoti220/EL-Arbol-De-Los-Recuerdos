@@ -1,0 +1,42 @@
+{
+    "map_id": "mapa_Init",
+    "width": 1700.0,
+    "height": 720.0,
+    "background_texture": "Background_mapa_Init",
+    "tree_texture": "Tree_Texture_init",
+    "static_obstacles": [
+        {
+            "id": "Forest_Wall_Left",
+            "x": 0.0,
+            "y": 50.0,
+            "w": 200.0,
+            "h": 640.0,
+            "texture": ""
+        },
+        {
+            "id": "Forest_Wall_Right",
+            "x": 1500.0,
+            "y": 50.0,
+            "w": 200.0,
+            "h": 640.0,
+            "texture": ""
+        },
+        {
+            "id": "Forest_Wall_Top",
+            "x": 0.0,
+            "y": 0.0,
+            "w": 1700.0,
+            "h": 50.0,
+            "texture": ""
+        },
+        {
+            "id": "Forest_Wall_Bottom",
+            "x": 0.0,
+            "y": 700.0,
+            "w": 1700.0,
+            "h": 120.0,
+            "texture": ""
+        }
+    ],
+    "entities": []
+}

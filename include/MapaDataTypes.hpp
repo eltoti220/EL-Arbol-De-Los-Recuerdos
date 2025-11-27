@@ -3,6 +3,12 @@
 
 #include <SFML/Graphics.hpp>
 #include <string>
+#include <vector>
+#include <map>
+#include <stdexcept>
+#include <fstream>
+#include <iostream>
+#include "nlohmann/json.hpp"
 
 namespace MapaData
 {
@@ -10,39 +16,45 @@ namespace MapaData
     const float MAP_WIDTH_INIT = 256.0f * 7.0f;
     const float MAP_HEIGHT_INIT = 144.0f * 5.0f;
 }
-// spawn de enemigos
-struct EnemySpawnData
+
+struct ObstacleData
 {
-    std::string enemyType;
-    sf::Vector2f position;
-    // float spawnTime; // tiempo despues del inicio del mapa para spawnear //*no estoy seguro de colocar eso, hay que ver si lo podemos desarrollar bien asi
-    int level = 1;
+    std::string id;
+    float x;
+    float y;
+    float width;
+    float height;
+    std::string textureId; // Para usar con TextureManager
 };
 
-struct PuzzleData
+struct EntityData
 {
-    int puzzleID;
-    std::string puzzleType;
-    sf::Vector2f position; //! OJO area donde se activa el puzzle o se encuentra
-    bool isSolved = false;
-    std::string datafile; // archivo con datos especificos del puzzle
+    std::string id;
+    std::string type; // Ejemplo: "Enemy", "Puzzle"
+    float x;
+    float y;
+    std::string textureId;
 };
 
-// datos de checkpoints
-struct CheckpointData
+struct MapData
 {
-    sf::Vector2f position;
-    int checkpointID;
-    bool isActive = false;
+    std::string mapId;
+    float width;
+    float height;
+    std::string backgroundTextureId;
+    std::string type_tree;
+    std::vector<ObstacleData> staticObstacles;
+    std::vector<EntityData> entities;
 };
 
-// structura para definir la aparicion de un jefe
-struct BossSpawnData
+class MapLoader
 {
-    std::string bossType;
-    sf::Vector2f position;
-    // float spawnTime; // tiempo despues del inicio del mapa para spawnear //*no estoy seguro de colocar eso, hay que ver si lo podemos desarrollar bien asi
-    std::string introCinematicFile; // archivo de video para la intro del boss
+public:
+    static MapData loadMap(const std::string &filename);
+
+private:
+    static ObstacleData parseObstacle(const nlohmann::json &jsonObstacle);
+    static EntityData parseEntity(const nlohmann::json &jsonEntity);
 };
 
 #endif

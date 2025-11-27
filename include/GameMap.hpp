@@ -4,10 +4,13 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <memory>
 #include "Quadtree.hpp"
 #include "Entity.hpp"
 #include "MapaDataTypes.hpp"
 #include "Rectangle.hpp"
+#include "Tree.hpp"
+#include <stdexcept>
 
 class GameMap
 {
@@ -30,6 +33,9 @@ private:
     float m_height;
     Quadtree *m_collisionTree;
     sf::Sprite m_backgroundSprite;
+    sf::Sprite m_foregroundSprite;
+    std::vector<std::unique_ptr<Entity>> m_staticEntities;
+    std::vector<Entity *> m_dynamicEntities;
 };
 
 #endif

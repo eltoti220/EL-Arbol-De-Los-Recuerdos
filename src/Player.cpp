@@ -173,6 +173,31 @@ void Player::update(float dtime)
     playerShape.setPosition(m_position);
 }
 
+void Player::checkMapCollision(GameMap &gameMap)
+{
+    Rectangle playerBox = getBoundingBox();
+    std::vector<Entity *> collidingEntities = gameMap.getEntitiesInArea(playerBox);
+
+    for (Entity *entity : collidingEntities)
+    {
+        if (entity == this)
+        {
+            continue;
+        }
+        Rectangle entityBox = entity->getBoundingBox();
+
+        sf::Vector2f mtv = playerBox.CalculateMtv(entityBox);
+        if (mtv.x == 0.0f && mtv.y == 0.0f)
+        {
+            continue;
+        }
+
+        m_position += mtv;
+
+        playerShape.setPosition(m_position);
+    }
+}
+
 void Player::draw(sf::RenderTarget &target, sf::RenderStates states) const
 {
     target.draw(playerShape, states);

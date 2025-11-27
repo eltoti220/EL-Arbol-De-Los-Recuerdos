@@ -96,18 +96,30 @@ void PlayingState::update(float dtime)
 {
     if (m_entityManager && m_gameMap)
     {
-        m_entityManager->updateEntities(dtime, *m_player);
+        if (m_player)
+        {
+            m_player->update(dtime);
+        }
         m_gameMap->update(dtime);
 
-        const std::vector<Entity *> &entities = m_entityManager->getEntities();
-        for (Entity *entity : entities)
+        const std::vector<Entity *> &dynamicEntities = m_entityManager->getEntities();
+        for (Entity *entity : dynamicEntities)
         {
-            m_gameMap->RegisterDinamicEntity(entity);
+            if (entity != m_player)
+            {
+                m_gameMap->RegisterDinamicEntity(entity);
+            }
         }
 
+        if (m_player)
+        {
+            m_player->checkMapCollision(*m_gameMap);
+        }
+        m_entityManager->updateEntities(dtime, *m_player);
         // aqui se aniadirira la logica central de la colision entre entidades creo (osea  jugaodr vs enemigo)
         // la consulta de isDodging o isBlocking se realizara en esa logica
     }
+
     handleCamera(dtime);
 }
 
@@ -115,36 +127,20 @@ void PlayingState::handleCamera(float dtime)
 {
     if (m_player)
     {
-        const float MAP_WIDTH = m_gameMap->getWidth();
-        const float MAP_HEIGHT = m_gameMap->getHeight();
 
         sf::Vector2f playerPos = m_player->getPosition();
-        sf::Vector2f viewSize = m_gameView.getSize();
+        float mapWidth = m_gameMap->getWidth();
+        float mapHeight = m_gameMap->getHeight();
+        float viewWidth = m_gameView.getSize().x;
+        float viewHeight = m_gameView.getSize().y;
 
-        float clampedX = playerPos.x;
-        float clampedY = playerPos.y;
+        float minX = viewWidth / 2.0f;
+        float maxX = mapWidth - (viewWidth / 2.0f);
+        float minY = viewHeight / 2.0f;
+        float maxY = mapHeight - (viewHeight / 2.0f);
 
-        if (MAP_WIDTH > viewSize.x)
-        {
-            float minX = viewSize.x / 2.0f;
-            float maxX = MAP_WIDTH - (viewSize.x / 2.0f);
-            clampedX = std::max(minX, std::min(playerPos.x, maxX));
-        }
-        else
-        {
-            clampedX = MAP_WIDTH / 2.0f;
-        }
-
-        if (MAP_HEIGHT > viewSize.y)
-        {
-            float minY = viewSize.y / 2.0f;
-            float maxY = MAP_HEIGHT - (viewSize.y / 2.0f);
-            clampedY = std::max(minY, std::min(playerPos.y, maxY));
-        }
-        else
-        {
-            clampedY = MAP_HEIGHT / 2.0f;
-        }
+        float clampedX = std::clamp(playerPos.x, minX, maxX);
+        float clampedY = std::clamp(playerPos.y, minY, maxY);
 
         m_gameView.setCenter(clampedX, clampedY);
     }

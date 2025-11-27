@@ -3,12 +3,13 @@
 
 #include "../include/MeleeAttack.hpp"
 #include "../include/DodgeAbility.hpp"
-#include "../include/BlockOfAbility.hpp"
-#include "../include/BlockOnAbility.hpp"
-#include "../include/Rectangle.hpp"
+#include "BlockOfAbility.hpp"
+#include "BlockOnAbility.hpp"
+#include "Rectangle.hpp"
 #include "Entity.hpp"
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include "GameMap.hpp"
 
 class Ability;
 
@@ -20,6 +21,7 @@ public:
 
     // rectangle para colisiones
     Rectangle getBoundingBox() const override;
+    void checkMapCollision(GameMap &gameMap);
 
     // metodos de jugabilidad
     void prossesEvent(sf::Event event);
