@@ -9,7 +9,6 @@ GameMap::GameMap(float width, float height)
 
     MapData mapData;
     const std::string MAP_FILE = "assets/metadata/mapa_init.json";
-
     try
     {
         mapData = MapLoader::loadMap(MAP_FILE);
@@ -30,9 +29,6 @@ GameMap::GameMap(float width, float height)
         sf::Texture &tx_background = TextureManager::getInstance().getTexture(mapData.backgroundTextureId);
         m_backgroundSprite.setTexture(tx_background);
         m_backgroundSprite.setScale(7.0f, 5.0f);
-        m_foregroundSprite.setTexture(TextureManager::getInstance().getTexture(mapData.type_tree));
-        m_foregroundSprite.setScale(7.0f, 5.0f);
-
         std::cout << "DEBUG: GameMap Cargo la textura de fondo usando el texturemanager.\n";
     }
     catch (const std::runtime_error &e)
@@ -70,6 +66,27 @@ GameMap::GameMap(float width, float height)
                     std::cerr << "ERROR al crear sub-obstáculo (" << data.id << "): " << e.what() << std::endl;
                 }
             }
+        }
+    }
+
+    for (const auto &data : mapData.decorations)
+    {
+        try
+        {
+            sf::Texture &tx_textureTree = TextureManager::getInstance().getTexture(data.textureId);
+
+            sf::Sprite sprite;
+            sprite.setTexture(TextureManager::getInstance().getTexture(data.textureId));
+            sprite.setPosition(data.x, data.y);
+            if (data.textureId == "Tree_Texture_init")
+            {
+                sprite.setScale(7.0, 5.0);
+            }
+            m_decorativeSprites.push_back(sprite);
+        }
+        catch (const std::exception &e)
+        {
+            std::cerr << "ERROR: No se pudo crear el sprite decorativo (" << data.id << "): " << e.what() << std::endl;
         }
     }
 }
@@ -133,7 +150,10 @@ std::vector<Entity *> GameMap::getEntitiesInArea(const Rectangle &area) const
 void GameMap::draw(sf::RenderWindow &window)
 {
     window.draw(m_backgroundSprite);
-
+    for (const auto &sprite : m_decorativeSprites)
+    {
+        window.draw(sprite);
+    }
     for (const auto &entity : m_staticEntities)
     {
         window.draw(*entity);

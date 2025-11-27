@@ -41,6 +41,25 @@ EntityData MapLoader::parseEntity(const json &jsonEntity)
     }
 }
 
+DecorationData MapLoader::parseDecoration(const json &jsonDecoration)
+{
+    DecorationData decoration;
+    try
+    {
+        decoration.id = jsonDecoration.at("id").get<std::string>();
+        decoration.x = jsonDecoration.at("x").get<float>();
+        decoration.y = jsonDecoration.at("y").get<float>();
+        decoration.width = jsonDecoration.at("w").get<float>();
+        decoration.height = jsonDecoration.at("h").get<float>();
+        decoration.textureId = jsonDecoration.at("texture").get<std::string>();
+        return decoration;
+    }
+    catch (const json::exception &e)
+    {
+        throw std::runtime_error("Error al parsear DecorationData en json: " + std::string(e.what()));
+    }
+}
+
 MapData MapLoader::loadMap(const std::string &filename)
 {
     std::ifstream fileStream(filename);
@@ -81,7 +100,12 @@ MapData MapLoader::loadMap(const std::string &filename)
         {
             mapData.entities.push_back(parseEntity(jsonEntity));
         }
-    }
+
+        for (const auto &jsonDecoration : jsonData.at("decorations"))
+        {
+            mapData.decorations.push_back(parseDecoration(jsonDecoration));
+        }
+        }
     catch (const json::exception &e)
     {
         throw std::runtime_error("Error al extraer datos del mapa desde JSON: " + std::string(e.what()));

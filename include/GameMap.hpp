@@ -36,6 +36,7 @@ private:
     sf::Sprite m_foregroundSprite;
     std::vector<std::unique_ptr<Entity>> m_staticEntities;
     std::vector<Entity *> m_dynamicEntities;
+    std::vector<sf::Sprite> m_decorativeSprites;
 };
 
 #endif

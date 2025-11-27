@@ -35,7 +35,15 @@ struct EntityData
     float y;
     std::string textureId;
 };
-
+struct DecorationData
+{
+    std::string id;
+    float x;
+    float y;
+    float width;
+    float height;
+    std::string textureId;
+};
 struct MapData
 {
     std::string mapId;
@@ -45,6 +53,7 @@ struct MapData
     std::string type_tree;
     std::vector<ObstacleData> staticObstacles;
     std::vector<EntityData> entities;
+    std::vector<DecorationData> decorations;
 };
 
 class MapLoader
@@ -55,6 +64,7 @@ public:
 private:
     static ObstacleData parseObstacle(const nlohmann::json &jsonObstacle);
     static EntityData parseEntity(const nlohmann::json &jsonEntity);
+    static DecorationData parseDecoration(const nlohmann::json &jsonDecoration);
 };
 
 #endif

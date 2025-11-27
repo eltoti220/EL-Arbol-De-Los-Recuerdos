@@ -38,5 +38,15 @@
             "texture": ""
         }
     ],
-    "entities": []
+    "entities": [],
+    "decorations": [
+        {
+            "id": "Tree_decorations_init",
+            "x": 0.0,
+            "y": 0.0,
+            "w": 600.0,
+            "h": 600.0,
+            "texture": "Tree_Texture_init"
+        }
+    ]
 }
