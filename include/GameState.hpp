@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 
 class StateManager;
-// funcion virtual para el estado del juego
+
 class GameState
 {
 public:
@@ -18,6 +18,9 @@ public:
 
     virtual void onEntry();
     virtual void onExit();
+
+    virtual void handleInput() {}
+    virtual void render() {}  
 };
 
 #endif

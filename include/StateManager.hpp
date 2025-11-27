@@ -4,21 +4,28 @@
 #include <vector>
 #include <memory>
 #include "GameState.hpp"
+#include "InventoryData.hpp"
 
 class StateManager
 {
 public:
     StateManager(sf::RenderWindow &_window);
-    sf::RenderWindow &getWindow() { return window; }
     ~StateManager();
-    void pushSate(GameState *state);
-    void popState();
-    void changeState(GameState *state);
 
+    // Métodos
+    void pushState(GameState *state);
+    void popState();
+    GameState* getCurrentState();
+    void changeState(GameState *state);
     void prossesEvent(sf::Event event);
     void update(float dtime);
     void draw(sf::RenderWindow &window);
     bool isEmpty() const;
+
+    sf::RenderWindow &getWindow() { return window; }
+
+    // Inventario global
+    InventoryData inventory;
 
 private:
     std::vector<GameState *> StackState;

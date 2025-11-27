@@ -120,6 +120,7 @@ void Enemy::update(float dt, Player &player)
     if (!isAlive())
         return;
 
+    // Esto ya reduce el timer y maneja que no baje de cero. ¡Correcto!
     attackTimer -= dt;
     if (attackTimer < 0.f)
         attackTimer = 0.f;

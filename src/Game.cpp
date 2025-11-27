@@ -13,7 +13,7 @@ Game::Game()
     m_window.setFramerateLimit(60);
 
     // 3. Empujar el estado inicial.
-    manager->pushSate(new MainMenu(manager));
+    manager->pushState(new MainMenu(manager));
 }
 
 void Game::run()
@@ -56,16 +56,24 @@ void Game::init()
 {
     m_window.create(sf::VideoMode(1400, 700), "Menu");
 
-    TextureManager::getInstance().loadTexture("Menu_Background", "assets/graphics/assets_Menu/Menu_Background.png");
-    TextureManager::getInstance().loadTexture("Background_mapa_Init", "assets/graphics/Mapas/Background_mapa_Init.png");
+    TextureManager::getInstance().loadTexture("Menu_Background",
+                                              "assets/graphics/assets_Menu/Menu_Background.png");
 
-    // 1. Textura del Enemigo aun falta la textura
-    // TextureManager::getInstance().loadTexture("Enemy_Goblin", "assets/graphics/Characters/enemy_goblin.png");
+    TextureManager::getInstance().loadTexture("Background_mapa_Init",
+                                              "assets/graphics/Mapas/Background_mapa_Init.png");
 
-    // 2. Textura del Jugador falta la textura
-    // TextureManager::getInstance().loadTexture("Player_Sprite", "assets/graphics/Characters/player_main.png");
+    TextureManager::getInstance().loadTexture("Enemy_Goblin",
+                                              "assets/graphics/Characters/enemy_goblin.png");
+
+    TextureManager::getInstance().loadTexture("Player_Sprite",
+                                              "assets/graphics/Characters/player_main.png");
+
+    TextureManager::getInstance().loadTexture("Inventory_Background",
+                                              "assets/graphics/Inventory/Inventory_Background.png");
+
     TextureManager::getInstance().loadTexture("Tree_Texture_init", "assets/graphics/Mapas/Arboles.png");
+    TextureManager::getInstance().loadTexture("Item_Potion",
+                                              "assets/graphics/Items/potion.png");
 
     std::cout << "DEBUG: Texturas iniciales cargadas en Game::init().\n";
-    // -------------------------
 }

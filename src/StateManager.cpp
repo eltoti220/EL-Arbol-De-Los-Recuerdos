@@ -10,7 +10,7 @@ StateManager::~StateManager()
     }
 }
 
-void StateManager::pushSate(GameState *state)
+void StateManager::pushState(GameState *state)
 {
     StackState.push_back(state);
     state->onEntry();
@@ -32,7 +32,7 @@ void StateManager::changeState(GameState *state)
     {
         popState();
     }
-    pushSate(state);
+    pushState(state);
 }
 
 void StateManager::prossesEvent(sf::Event event)
