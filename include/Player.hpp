@@ -54,6 +54,10 @@ public:
     
     InventoryData& getInventory() { return inventory; }
 
+    // Métodos para obtener información de la vida (útil para dibujar la barra)
+    int getCurrentHP() const { return currentHP; }
+    int getMaxHP() const { return maxHP; }
+
 private:
     // Atributos de combate
     int maxHealth;
@@ -85,6 +89,9 @@ private:
     sf::Vector2f currentMovement;
 
     InventoryData inventory;
+
+    int currentHP; // Puntos de vida actuales
+    const int maxHP = 100; // Puntos de vida máximos
 };
 
 #endif

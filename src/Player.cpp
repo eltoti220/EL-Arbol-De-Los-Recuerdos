@@ -13,7 +13,7 @@ Player::Player(float startX, float startY)
     attackDamage = 15.0f;
     attackSpeed = 0.8f;
 
-    isBlockingFlag = false; // <- corregido
+    isBlockingFlag = false;
     m_isDodging = false;
     dodgeTime = 0.0f;
     dodgeDirection = {0.0f, 0.0f};
@@ -141,12 +141,39 @@ void Player::draw(sf::RenderTarget &target, sf::RenderStates states) const
     target.draw(playerShape, states);
 }
 
+// --- MÉTODO DE DAÑO FINAL Y COMPLETO ---
 void Player::takeDamage(int amount)
 {
-    currentHealth -= amount;
-    if (currentHealth < 0) currentHealth = 0;
+    // 1. Lógica de Inmunidad/Esquive
+    if (m_isDodging) {
+        std::cout << "DEBUG: Jugador esquivó el ataque. No recibió daño.\n";
+        return; // El jugador no recibe daño si está esquivando.
+    }
 
-    std::cout << "DEBUG: Player recibió " << amount << " de daño. Vida actual: " << currentHealth << "\n";
+    int finalDamage = amount;
+    const float BLOCK_DAMAGE_REDUCTION = 0.5f; // Reduce el daño a la mitad
+
+    // 2. Lógica de Bloqueo
+    if (isBlockingFlag) {
+        finalDamage = static_cast<int>(amount * BLOCK_DAMAGE_REDUCTION);
+        std::cout << "DEBUG: Jugador bloqueó. Daño reducido de " << amount << " a " << finalDamage << ".\n";
+    }
+
+    // 3. Aplicar Daño
+    currentHealth -= finalDamage;
+    
+    // Asegurarse de que la vida no sea negativa
+    if (currentHealth < 0) {
+        currentHealth = 0;
+    }
+
+    std::cout << "DEBUG: Player recibió " << finalDamage << " de daño. Vida actual: " << currentHealth << "\n";
+    
+    // 4. Lógica de Muerte (Opcional)
+    if (currentHealth == 0) {
+        std::cout << "GAME OVER: El jugador ha muerto.\n";
+        // Aquí iría la lógica para cambiar el estado a Game Over
+    }
 }
 
 void Player::heal(int amount)

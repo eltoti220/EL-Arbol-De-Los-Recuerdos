@@ -99,7 +99,6 @@ void PlayingState::prossesEvent(sf::Event event)
         m_player->prossesEvent(event);
 }
 
-
 void PlayingState::update(float dtime)
 {
     if (m_entityManager && m_gameMap)
@@ -112,6 +111,40 @@ void PlayingState::update(float dtime)
         {
             m_gameMap->RegisterDinamicEntity(entity);
         }
+
+        // --- LÓGICA DE DAÑO DEL ENEMIGO ---
+        Rectangle playerBounds = m_player->getBoundingBox();
+        
+        for (Entity *entity : entities)
+        {
+            Enemy *enemy = dynamic_cast<Enemy *>(entity);
+            
+            if (enemy && enemy->isAlive())
+            {
+                // Opción 1: Colisión de Bounding Box (simple contacto)
+                // Usaremos esta por simplicidad.
+                Rectangle enemyBounds = enemy->getBoundingBox();
+                
+                if (playerBounds.intersects(enemyBounds)) 
+                {
+                    // 1. Verificar si el enemigo puede atacar (cooldown listo)
+                    if (enemy->isAttackReady()) 
+                    {
+                        // 2. Aplicar el daño al jugador (usando el daño definido en Player)
+                        const int ENEMY_DAMAGE = static_cast<int>(enemy->getAttackDamage());
+
+                        m_player->takeDamage(ENEMY_DAMAGE);
+                        
+                        // 3. Iniciar el cooldown del ataque del enemigo
+                        enemy->startAttackCooldown(); 
+                    }
+                }
+                
+                // Opción 2: Colisión de Ataque/Rango (si el enemigo usa un AttackRadius)
+                // if (enemy->distanceTo(m_player->getPosition()) <= enemy->getAttackRadius()) { ... }
+            }
+        }
+        // --- FIN DE LA LÓGICA DE DAÑO DEL ENEMIGO ---
     }
 
     handleCamera(dtime);
