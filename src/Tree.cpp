@@ -41,7 +41,7 @@ void Tree::draw(sf::RenderTarget &target, sf::RenderStates states) const
     target.draw(sp_Tree, states);
 
     // 2. DEBUG: Dibujar elHITBOX real (el pequeño y acomodado)
-    if (true)
+    /*if (true)
     {
         Rectangle rect = getBoundingBox();
         sf::RectangleShape boundsShape;
@@ -51,5 +51,5 @@ void Tree::draw(sf::RenderTarget &target, sf::RenderStates states) const
         boundsShape.setOutlineThickness(1.0f);
         boundsShape.setOutlineColor(sf::Color::Red);
         target.draw(boundsShape, states);
-    }
+    }*/
 }
